@@ -1,6 +1,6 @@
 import time
 # Instructions for player
-print("This tic tac toe AI Machine has been created by Ang Jun Ray. 23 Nov 2020")
+print("This tic tac toe AI Machine has been created by AJR07, Collaborated by YNWAPythoner. 23 Nov 2020")
 print("*********TO REQUEST MORE FEATURES/RSPORT A BUG, PLEASE LEAVE A NOTE ON GITHUB. *******")
 print("To play with the program, please input the place you would want to place your X or 0")
 print("It is defined by (row character)(column number)")
