@@ -8,7 +8,7 @@ import copy
 
 print("This tic tac toe AI Machine has been created by AJR07, Collaborated by YNWAPythoner. 23 Nov 2020")
 print("*********TO REQUEST MORE FEATURES/REPORT A BUG, PLEASE LEAVE A NOTE ON GITHUB. *******")
-print("To play with the program, please input the place you would want to place your X or 0")
+print("To play with the program, please input the place you would want to place your X")
 time.sleep(1)
 print("It is defined by (row character)(column number)")
 print("This is the board:")
@@ -123,6 +123,7 @@ while True:
         choice = int(input("Do you want to go first or second? (1 for first and 2 for second): "))
     except:
         print("That input is invalid, please retry")
+        continue
     if choice == 1 or choice == 2:
         break
     else:
@@ -131,7 +132,7 @@ while True:
 
 if choice == 2:
     board["5"] = True
-    print("5")
+    print("Computer played: 5")
     available_moves.pop(available_moves.index("5"))
 booly = True
 while True:
@@ -139,7 +140,6 @@ while True:
     selection = input("Enter your choice: ")
     x = selection
     board[x] = False
-    print("You played: " + x)
     available_moves.pop(available_moves.index(x))
     if check_score():
         break
@@ -164,7 +164,7 @@ while True:
                     print("Computer played: " + x)
                     available_moves.pop(available_moves.index(x))
                 else:
-                    list1 = ["1", "3", "5", "7", "9"]
+                    list1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
                     while True:
                         x = random.choice(list1)
                         if x in available_moves:
