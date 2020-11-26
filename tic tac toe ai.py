@@ -9,8 +9,17 @@ import copy
 print("This tic tac toe AI Machine has been created by AJR07, Collaborated by YNWAPythoner. 23 Nov 2020")
 print("*********TO REQUEST MORE FEATURES/REPORT A BUG, PLEASE LEAVE A NOTE ON GITHUB. *******")
 print("To play with the program, please input the place you would want to place your X or 0")
+time.sleep(1)
 print("It is defined by (row character)(column number)")
+print("This is the board:")
+print("1 2 3")
+print("4 5 6")
+print("7 8 9")
+time.sleep(1)
+print("The indexes are what you are supposed to enter to select a move later on")
+print("The player would be X all the time, whether he moves first or not. (Could be changed in the future)")
 time.sleep(5)
+
 
 # ------------------------------------------------------------------
 # FUNCTIONS---------------------------------------------------------
@@ -21,10 +30,10 @@ def display_board():
         for j in range(3):
             if board[str(3 * i + j + 1)]:
                 string += "O "
-            elif not board[str(3 * i + j + 1)]:
+            elif board[str(3 * i + j + 1)] == False:
                 string += "X "
             elif board[str(3 * i + j + 1)] is None:
-                string += str(3 * i + j + 1) + " "
+                string += "_ "
         print(string)
 
 
@@ -95,6 +104,7 @@ def check_threat():
             winning_lines[i][0]] == None:
             return winning_lines[i][0]
 
+
 # ------------------------------------------------------------------
 # IMPORTANT ARRAYS--------------------------------------------------
 # ------------------------------------------------------------------
@@ -120,7 +130,7 @@ while True:
     selection = input("Enter your choice: ")
     x = selection
     board[x] = False
-    print(x)
+    print("You played: " + x)
     available_moves.pop(available_moves.index(x))
     if check_score():
         break
@@ -136,13 +146,13 @@ while True:
             if check_threat() is not None:
                 x = check_threat()
                 board[x] = True
-                print(x)
+                print("Computer played: " + x)
                 available_moves.pop(available_moves.index(x))
             else:
                 if check_double_attack() is not None:
                     x = check_double_attack()
                     board[x] = True
-                    print(x)
+                    print("Computer played: " + x)
                     available_moves.pop(available_moves.index(x))
                 else:
                     list1 = ["1", "3", "5", "7", "9"]
@@ -153,5 +163,5 @@ while True:
                         else:
                             list1.pop(list1.index(x))
                     board[x] = True
-                    print(x)
+                    print("Computer played: " + x)
                     available_moves.pop(available_moves.index(x))
