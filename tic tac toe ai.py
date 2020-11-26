@@ -2,24 +2,28 @@ import time
 import random
 import copy
 
-# Instructions for player
+# ------------------------------------------------------------------
+# INSTRUCTIONS FOR PLAYER-------------------------------------------
+# ------------------------------------------------------------------
+
 print("This tic tac toe AI Machine has been created by AJR07, Collaborated by YNWAPythoner. 23 Nov 2020")
-print("*********TO REQUEST MORE FEATURES/RSPORT A BUG, PLEASE LEAVE A NOTE ON GITHUB. *******")
+print("*********TO REQUEST MORE FEATURES/REPORT A BUG, PLEASE LEAVE A NOTE ON GITHUB. *******")
 print("To play with the program, please input the place you would want to place your X or 0")
 print("It is defined by (row character)(column number)")
 time.sleep(5)
 
-
-# functions
+# ------------------------------------------------------------------
+# FUNCTIONS---------------------------------------------------------
+# ------------------------------------------------------------------
 def display_board():
     for i in range(3):
         string = ""
         for j in range(3):
-            if board[str(3 * i + j + 1)] == True:
+            if board[str(3 * i + j + 1)]:
                 string += "O "
-            elif board[str(3 * i + j + 1)] == False:
+            elif not board[str(3 * i + j + 1)]:
                 string += "X "
-            elif board[str(3 * i + j + 1)] == None:
+            elif board[str(3 * i + j + 1)] is None:
                 string += str(3 * i + j + 1) + " "
         print(string)
 
@@ -91,64 +95,63 @@ def check_threat():
             winning_lines[i][0]] == None:
             return winning_lines[i][0]
 
+# ------------------------------------------------------------------
+# IMPORTANT ARRAYS--------------------------------------------------
+# ------------------------------------------------------------------
 
-# starter arrays
 winning_lines = [["1", "2", "3"], ["4", "5", "6"], ["7", "8", "9"], ["1", "4", "7"], ["2", "5", "8"],
                  ["3", "6", "9"], ["1", "5", "9"], ["3", "5", "7"]]
 available_moves = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 board = {"1": None, "2": None, "3": None, "4": None, "5": None, "6": None, "7": None, "8": None, "9": None}
 
-# inputs
+# ------------------------------------------------------------------
+# INPUTS
+# ------------------------------------------------------------------
+
+
+choice = int(input("Do you want to go first or second? (1 for first and 2 for second): "))
+if choice == 2:
+    board["5"] = True
+    print("5")
+    available_moves.pop(available_moves.index("5"))
+booly = True
 while True:
-    a = input("Would you like to go first? (Yes/No)")
-    if a == "Yes" or a == "No":
+    display_board()
+    selection = input("Enter your choice: ")
+    x = selection
+    board[x] = False
+    print(x)
+    available_moves.pop(available_moves.index(x))
+    if check_score():
         break
     else:
-        print("Capitalization matters, please input exactly Yes or No")
-
-    choice = int(input("Do you want to go first or second? (1 for first and 2 for second): "))
-    if choice == 2:
-        board["5"] = True
-        print("5")
-        available_moves.pop(available_moves.index("5"))
-    booly = True
-    while True:
-        display_board()
-        selection = input("Enter your choice: ")
-        x = selection
-        board[x] = False
-        print(x)
-        available_moves.pop(available_moves.index(x))
-        if check_score():
+        if check_win() is not None:
+            x = check_win()
+            board[x] = True
+            print(x)
+            available_moves.pop(available_moves.index(x))
+            check_score()
             break
         else:
-            if check_win() is not None:
-                x = check_win()
+            if check_threat() is not None:
+                x = check_threat()
                 board[x] = True
                 print(x)
                 available_moves.pop(available_moves.index(x))
-                check_score()
-                break
             else:
-                if check_threat() is not None:
-                    x = check_threat()
+                if check_double_attack() is not None:
+                    x = check_double_attack()
                     board[x] = True
                     print(x)
                     available_moves.pop(available_moves.index(x))
                 else:
-                    if check_double_attack() is not None:
-                        x = check_double_attack()
-                        board[x] = True
-                        print(x)
-                        available_moves.pop(available_moves.index(x))
-                    else:
-                        list1 = ["1", "3", "5", "7", "9"]
-                        while True:
-                            x = random.choice(list1)
-                            if x in available_moves:
-                                break
-                            else:
-                                list1.pop(list1.index(x))
-                        board[x] = True
-                        print(x)
-                        available_moves.pop(available_moves.index(x))
+                    list1 = ["1", "3", "5", "7", "9"]
+                    while True:
+                        x = random.choice(list1)
+                        if x in available_moves:
+                            break
+                        else:
+                            list1.pop(list1.index(x))
+                    board[x] = True
+                    print(x)
+                    available_moves.pop(available_moves.index(x))
