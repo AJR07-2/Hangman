@@ -118,8 +118,17 @@ board = {"1": None, "2": None, "3": None, "4": None, "5": None, "6": None, "7": 
 # INPUTS
 # ------------------------------------------------------------------
 
+while True:
+    try:
+        choice = int(input("Do you want to go first or second? (1 for first and 2 for second): "))
+    except:
+        print("That input is invalid, please retry")
+    if choice == 1 or choice == 2:
+        break
+    else:
+        print("That input is invalid, please retry")
+    time.sleep(2)
 
-choice = int(input("Do you want to go first or second? (1 for first and 2 for second): "))
 if choice == 2:
     board["5"] = True
     print("5")
@@ -165,3 +174,4 @@ while True:
                     board[x] = True
                     print("Computer played: " + x)
                     available_moves.pop(available_moves.index(x))
+    time.sleep(3)
