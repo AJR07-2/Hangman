@@ -27,28 +27,36 @@ void display_board(map <string, int> board){
 }
 
 
-def check_score():
-abool = True
-for i in range(8):
-if board[winning_lines[i][0]] == True and board[winning_lines[i][1]] == True and board[
-                                                                                       winning_lines[i][2]] == True:
-print("Computer won!")
-abool = False
-return True
-elif board[winning_lines[i][0]] == False and board[winning_lines[i][1]] == False and board[
-                                                                                           winning_lines[i][2]] == False:
-print("You won!")
-abool = False
-return True
-if abool:
-bbool = True
-for i in range(9):
-if board[str(i + 1)] is None:
-bbool = False
-if bbool:
-print("Draw!")
-return True
+bool check_score(){
+    bool abool = true;
+    for (int i = 0; i < 8; i++){
+        if (board[winning_lines[i][0]] == true and (board[winning_lines[i][1]] == true and board[winning_lines[i][2]] == true)){
+            cout << "Computer won!" << endl;
+            abool = false;
+            return true;
+        }
 
+        else if (board[winning_lines[i][0]] == false and board[winning_lines[i][1]] == false and board[winning_lines[i][2]] == false){
+            cout << "You won!" << endl;
+            abool = false;
+            return true;
+        }
+
+        if (abool == true){
+            bool bbool = true;
+            for (int i = 0; i < 9; i++){
+                if (board[to_string(i + 1)] == 0){
+                    bbool = false;
+                }
+            }
+            if (bbool == true){
+                cout << "Draw!" << endl;
+                return true;
+            }
+        }
+
+
+}
 
 def check_win():
 for i in range(8):
@@ -170,3 +178,4 @@ int main(){
                                                                     available_moves.pop(available_moves.index(x))
                                                                     time.sleep(3)
                                                                     }
+}
