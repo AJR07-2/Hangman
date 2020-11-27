@@ -79,14 +79,11 @@ def check_double_attack():
         pseudo_board[a] = True
         counter = 0
         for i in range(8):
-            if pseudo_board[winning_lines[i][0]] == True and pseudo_board[winning_lines[i][1]] == True and \
-                    pseudo_board[winning_lines[i][2]] == None:
+            if pseudo_board[winning_lines[i][0]] == True and pseudo_board[winning_lines[i][1]] == True and pseudo_board[winning_lines[i][2]] == None:
                 counter += 1
-            elif pseudo_board[winning_lines[i][0]] == True and pseudo_board[winning_lines[i][2]] == True and \
-                    pseudo_board[winning_lines[i][1]] == None:
+            elif pseudo_board[winning_lines[i][0]] == True and pseudo_board[winning_lines[i][2]] == True and pseudo_board[winning_lines[i][1]] == None:
                 counter += 1
-            elif pseudo_board[winning_lines[i][1]] == True and pseudo_board[winning_lines[i][2]] == True and \
-                    pseudo_board[winning_lines[i][0]] == None:
+            elif pseudo_board[winning_lines[i][1]] == True and pseudo_board[winning_lines[i][2]] == True and pseudo_board[winning_lines[i][0]] == None:
                 counter += 1
         if counter >= 2:
             return a

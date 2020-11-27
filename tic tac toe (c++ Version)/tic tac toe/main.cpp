@@ -74,26 +74,39 @@ string check_win(){
 }
     
     
-def check_double_attack():
-    for a in available_moves:
-        pseudo_board = copy.deepcopy(board)
-        pseudo_board[a] = True
+bool check_double_attack(){
+    int length = 0;
+    for(int i = 0; i < 10; i++){
+        if(available_moves[i] != "0"){
+            break;
+        }
+        else{
+            length++;
+        }
+    }
+    for (int j = 0; j < length; j++){
+        map<string, int> pseudo_board = board;
+        pseudo_board[j] = true;
         counter = 0
-        for i in range(8):
-        if pseudo_board[winning_lines[i][0]] == True and pseudo_board[winning_lines[i][1]] == True and \
-        pseudo_board[winning_lines[i][2]] == None:
-        counter += 1
-        elif pseudo_board[winning_lines[i][0]] == True and pseudo_board[winning_lines[i][2]] == True and \
-        pseudo_board[winning_lines[i][1]] == None:
-        counter += 1
-        elif pseudo_board[winning_lines[i][1]] == True and pseudo_board[winning_lines[i][2]] == True and \
-        pseudo_board[winning_lines[i][0]] == None:
-        counter += 1
-        if counter >= 2:
-        return a
+        for (int i = 0; i < 8; i++){
+            if pseudo_board[winning_lines[i][0]] == 1 and pseudo_board[winning_lines[i][1]] == 1 andpseudo_board[winning_lines[i][2]] == 0){
+                counter += 1;
+            }
+            else if (pseudo_board[winning_lines[i][0]] == 1 and pseudo_board[winning_lines[i][2]] == 1 and pseudo_board[winning_lines[i][1]] == 0){
+                counter += 1;
+            }
+            else if (pseudo_board[winning_lines[i][1]] == 1 and pseudo_board[winning_lines[i][2]] == 1 and pseudo_board[winning_lines[i][0]] == 0){
+                counter += 1;
+            }
+        }
+        if (counter >= 2){
+            return a
+        }
+    }
+}
         
         
-        def check_threat():
+def check_threat():
         for i in range(8):
         if board[winning_lines[i][0]] == False and board[winning_lines[i][1]] == False and board[
                                                                                                  winning_lines[i][2]] == None:
