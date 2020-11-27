@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
             endingLineNumber = "80"
-            landmarkName = "check_double_attack(available_moves)"
+            landmarkName = "check_double_attack()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "check_double_attack(available_moves)"
+            landmarkName = "check_double_attack()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
