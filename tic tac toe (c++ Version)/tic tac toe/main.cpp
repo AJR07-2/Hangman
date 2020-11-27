@@ -8,23 +8,23 @@ using namespace std;
 
 string winning_lines[8][3] = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}, {"1", "4", "7"}, {"2", "5", "8"}, {"3", "6", "9"}, {"1", "5", "9"}, {"3", "5", "7"}};
 string available_moves[10] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-map <string,int> a = {{"1", 0}, {"2", 0}, {"3", 0}, {"4", 0}, {"5", 0}, {"6", 0}, {"7", 0} ,{"8", 0}, {"9", 0}};
+map <string,int> board = {{"1", 0}, {"2", 0}, {"3", 0}, {"4", 0}, {"5", 0}, {"6", 0}, {"7", 0} ,{"8", 0}, {"9", 0}};
 
 
-//    ------------------------------------------------------------------
-//    FUNCTIONS---------------------------------------------------------
-//    ------------------------------------------------------------------
-void display_board():
-    for i in range(3):
-        string = ""
-for j in range(3):
-if board[str(3 * i + j + 1)]:
-string += "O "
-elif board[str(3 * i + j + 1)] == False:
-string += "X "
-elif board[str(3 * i + j + 1)] is None:
-string += "_ "
-print(string)
+// ------------------------------------------------------------------
+// FUNCTIONS---------------------------------------------------------
+// ------------------------------------------------------------------
+void display_board(map <string, int> board){
+    for(int i = 0; i < 3; i++){
+        string str1 = "";
+        for (int j = 0; j < 3; j++){
+            if (board[to_string(3 * i + j + 1)] == 1) str1 += "O ";
+            else if (board[to_string(3 * i + j + 1)] == 2) str1 += "X ";
+            else if (board[to_string(3 * i + j + 1)] == 0) str1 += "_ ";
+        }
+        cout << str1 << endl;
+    }
+}
 
 
 def check_score():
@@ -97,9 +97,9 @@ return winning_lines[i][0]
 
 
 int main(){
-    // ------------------------------------------------------------------
-    // INSTRUCTIONS FOR PLAYER-------------------------------------------
-    // ------------------------------------------------------------------
+// ------------------------------------------------------------------
+// INSTRUCTIONS FOR PLAYER-------------------------------------------
+// ------------------------------------------------------------------
     
     cout << " This tic tac toe AI Machine has been created by AJR07, Collaborated by YNWAPythoner. 23 Nov 2020" << '\n' << "*********TO REQUEST MORE FEATURES/REPORT A BUG, PLEASE LEAVE A NOTE ON GITHUB. *******" << '\n' << "To play with the program, please input the place you would want to place your X" << '\n';
     usleep(1000000);
@@ -107,10 +107,10 @@ int main(){
     usleep(1000000);
     cout <<  "The indexes are what you are supposed to enter to select a move later on" << '\n' << "The player would be X all the time, whether he moves first or not. (Could be changed in the future)" << '\n';
     usleep(5000000);
-    
-# ------------------------------------------------------------------
-# INPUTS
-# ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+// INPUTS------------------------------------------------------------
+// ------------------------------------------------------------------
     
     while True:
         try:
