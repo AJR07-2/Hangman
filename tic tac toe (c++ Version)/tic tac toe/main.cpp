@@ -70,11 +70,11 @@ string check_win(){
             return winning_lines[i][0];
         }
     }
-    return "0";
+    return "000";
 }
 
 
-bool check_double_attack(){
+int check_double_attack(){
     int length = 0;
     for(int i = 0; i < 10; i++){
         if(available_moves[i] != "0"){
@@ -103,7 +103,7 @@ bool check_double_attack(){
             return j;
         }
     }
-    return 0;
+    return -1;
 }
 
 
@@ -119,7 +119,7 @@ string check_threat(){
             return winning_lines[i][0];
         }
     }
-    return "0";
+    return "000";
 }
 
 int main(){
@@ -142,42 +142,66 @@ int main(){
         display_board();
         cout << "Enter your choice";
         cin >> selection;
-        string x = to_string(selection);
+        string x = to_string(selection); int choice  = x[0] - '0';
         board[x] = 2;
-        available_moves.pop(available_moves.index(x))
-            if check_score():
-                break
-            else:
-                if check_win() is not None:
-                    x = check_win()
-                    board[x] = True
-                    print(x)
-                    available_moves.pop(available_moves.index(x))
-                    check_score()
-                    break
-                else:
-                    if check_threat() is not None:
-                        x = check_threat()
-                        board[x] = True
-                        print("Computer played: " + x)
-                        available_moves.pop(available_moves.index(x))
-                    else:
-                        if check_double_attack() is not None:
-                            x = check_double_attack()
-                            board[x] = True
-                            print("Computer played: " + x)
-                            available_moves.pop(available_moves.index(x))
-                        else:
-                            list1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-                            while True:
-                                x = random.choice(list1)
-                                if x in available_moves:
-                                    break
-                                else:
-                                    list1.pop(list1.index(x))
-                            board[x] = True
-                            print("Computer played: " + x)
-                            available_moves.pop(available_moves.index(x))
-            time.sleep(3)
+        available_moves[choice] = "0";
+        if (check_score()){
+            break;
+        }
+        else{
+            if (check_win() != "000"){
+                x = check_win();
+                board[x] = true;
+                choice  = x[0] - '0';
+                cout << "x" << '\n';
+                available_moves[choice] = "0";
+                check_score();
+                break;
+            }
+            else{
+                if (check_threat() != "000"){
+                    x = check_threat();
+                    board[x] = true;
+                    choice  = x[0] - '0';
+                    cout << "Computer played: " << x << '\n';
+                    available_moves[choice] = "0";
+                }
+                
+                else{
+                    if (check_double_attack() != -1){
+                        x = check_double_attack();
+                        board[x] = true;
+                        choice  = x[0] - '0';
+                        cout << "Computer played: " << x << '\n';
+                        available_moves[choice] = "0";
+                    }
+                    else{
+                        string list1[10] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+                        while (true){
+                            x = list1[rand()%10];
+                            bool c = true;
+                            for(int i = 0; i < 10; i++){
+                                if(x == available_moves[i] and available_moves[i]!= "0"){
+                                    c = false;
+                                    break;
+                                }
+                            }
+                            if (c == false){
+                                break;
+                            }
+                            else{
+                                choice  = x[0] - '0'-1;
+                                list1[choice] = "0";
+                            }
+                        }
+                        board[x] = 1;
+                        cout << "Computer played: " << x << '\n';
+                        choice  = x[0] - '0'-1;
+                        available_moves[choice] = "0";
+                    }
+                }
+            }
+        }
+        usleep(3000000);
     }
 }
