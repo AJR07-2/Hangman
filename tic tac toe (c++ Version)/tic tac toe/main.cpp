@@ -137,7 +137,15 @@ int main(){
     // ------------------------------------------------------------------
     // INPUTS------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+    cout << "Do you want to go first or second? (1 for first and 2 for second): ";
+    usleep(2000000);
+    int choice; cin >> choice;
+    if (choice == 2){
+        board["5"] = true;
+        cout << "Computer played: 5";
+        available_moves[5]
+    }
+    booly = True
     while (true){
         display_board();
         cout << "Enter your choice";
