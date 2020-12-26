@@ -10,7 +10,6 @@ print("This tic tac toe AI Machine has been created by AJR07, Collaborated by YN
 print("*********TO REQUEST MORE FEATURES/REPORT A BUG, PLEASE LEAVE A NOTE ON GITHUB. *******")
 print("To play with the program, please input the place you would want to place your X")
 time.sleep(1)
-print("It is defined by (row character)(column number)")
 print("This is the board:")
 print("1 2 3")
 print("4 5 6")
