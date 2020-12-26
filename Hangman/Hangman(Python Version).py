@@ -29,7 +29,7 @@ def error(input, requirements):
 myList = []
 words = open("/Users/angjunray/Desktop/Coding/General/Projects/Hangman/words.txt", "r")
 for topic in words:
-  myList.append(topic)
+  myList.append(topic.rstrip("\n"))
 
 #--------------------
 #topic choice
@@ -40,8 +40,7 @@ while True:
   if topic == "?":
     print("----------LIST OF TOPICS AVALIABLE------------")
     for word in myList:
-      print("'" + word + "'")
-    
+      print(word)    
     print("------------------END OF LIST-----------------")
   elif topic in myList:
     break
@@ -61,7 +60,7 @@ uClient.close()
 
 #html parsing
 page=soup(page_html, "html.parser")
-container = page.findAll("div", {"class":"worldlist-section wordlist"})
+container = page.findAll("div", {"class":"worldlist-section wordlist-section--not-first"})
 print(str(container))
 #time 
 startime = time.time()
@@ -75,4 +74,4 @@ startime = time.time()
 #check time
 endtime = time.time()
 totaltime = startime - endtime
-print("You took " + str(totaltime) + " to complete the Hangman word!")
+print("You took " + str(abs(round(totaltime,5))) + " seconds to complete the Hangman word!")
