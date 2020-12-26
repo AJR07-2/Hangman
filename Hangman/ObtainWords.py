@@ -2,7 +2,11 @@
 import bs4
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
-
+import os
+import sys
+import time
+print("")
+print("")
 #--------FIRST PARSE OF LINKS----------
 my_url = "https://www.enchantedlearning.com/wordlist"
 uClient = uReq(my_url)
@@ -26,4 +30,13 @@ while counter <= 15:
     counter += 1
 
 
+#---------SECOND PARSE OF WORDS------------
+a = input("Is it alright if we create a few folders and files showing the databank of words for this? If you think you already have it, please input 0. Otherwise, input anything")
 
+if a == "0":
+    print("Alright, shutting program...")
+    sys.exit()
+
+print("Making directories and files in " + str(os.getcwd()))
+
+os.mkdir(os.getcwd())
