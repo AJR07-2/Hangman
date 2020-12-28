@@ -65,4 +65,5 @@ for i in topic:
         for word in page.find_all("div",  {"class": "wordlist-item"}):
             file1.write(word.text)
             file1.write("\n")
+            print("Hallo")
     counter += 1
