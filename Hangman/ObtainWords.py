@@ -56,8 +56,9 @@ print("Making files in " + str(os.getcwd()))
 counter = 0
 
 for i in topic:
-    with FileHandler(i, 'w+') as file1:
-        website = "https://www.enchantedlearning.com/wordlist" + links[counter]
+    with FileHandler(i + ".txt", 'w+') as file1:
+        website = "https://www.enchantedlearning.com" + links[counter]
+        print(website)
         uClient = uReq(my_url)
         page_html =  uClient.read()
         uClient.close()
