@@ -1,5 +1,3 @@
-#ONLY RUN THIS FILE IF U ARE LACKING THE WORD BASE
-import bs4
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import os
@@ -7,6 +5,22 @@ import sys
 import time
 print("")
 print("")
+
+
+class FileHandler():
+
+    def __init__(self, file_name, file_mode):
+        self._file_name = file_name
+        self._file_mode = file_mode
+
+    def __enter__(self):
+        self._file = open(self._file_name, self._file_mode)
+        return self._file
+
+
+    def __exit__(self, exc_type,exc_value, exc_traceback):
+        self._file.close()
+
 #--------FIRST PARSE OF LINKS----------
 my_url = "https://www.enchantedlearning.com/wordlist"
 uClient = uReq(my_url)
@@ -26,7 +40,7 @@ while counter <= 15:
     container = tables[counter].find_all("a")
     for label in container:
         links.append(label.get('href'))
-        topic.append(label.text)
+        topic.append(label.text.replace('/',''))
     counter += 1
 
 
@@ -36,18 +50,19 @@ a = input("Is it alright if we create a few files showing the databank of words 
 if a == "0":
     print("Alright, shutting program...")
     sys.exit()
-
-print("Making  files in " + str(os.getcwd()))
+os.chdir(str(os.getcwd()) + "/Hangman/DataBase")
+print("Making files in " + str(os.getcwd()))
 
 counter = 0
 
 for i in topic:
-    file = open(i, "w+")
-    website = "https://www.enchantedlearning.com/wordlist" + links[counter]
-    uClient = uReq(my_url)
-    page_html =  uClient.read()
-    uClient.close()
-    page=soup(page_html, "html.parser")
-
-
+    with FileHandler(i, 'w+') as file1:
+        website = "https://www.enchantedlearning.com/wordlist" + links[counter]
+        uClient = uReq(my_url)
+        page_html =  uClient.read()
+        uClient.close()
+        page=soup(page_html, "html.parser")
+        for word in page.find_all("div",  {"class": "wordlist-item"}):
+            file1.write(word.text)
+            file1.write("\n")
     counter += 1

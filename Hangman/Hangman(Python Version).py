@@ -16,8 +16,14 @@ Thanks and enjoy! :D
 2. more words
 3. multiplayer
 """
+
 print(intro)
 time.sleep(5)
+
+hallo = input("Do you have many files having the extension '.txt' already? If yes, input 1, if not, input anything else")
+if hallo == 1:
+  import ObtainWords
+
 #--------------------
 #functions
 #--------------------
