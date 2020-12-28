@@ -5,7 +5,7 @@ import sys
 import time
 print("")
 print("")
-
+starttime = time.time()
 
 class FileHandler():
 
@@ -40,7 +40,8 @@ while counter <= 15:
     container = tables[counter].find_all("a")
     for label in container:
         links.append(label.get('href'))
-        topic.append(label.text.replace('/',''))
+        topic1 = label.text.replace('/','')
+        topic.append(topic1.replace("\"", ""))
     counter += 1
 
 
@@ -51,20 +52,23 @@ if a == "0":
     print("Alright, shutting program...")
     sys.exit()
 os.chdir(str(os.getcwd()) + "/Hangman/DataBase")
-print("Making files in " + str(os.getcwd()))
+print("Making files in " + str(os.getcwd()) + " ")
 
-counter = 0
+counter1 = 0
 
 for i in topic:
-    with FileHandler(i + ".txt", 'w+') as file1:
-        website = "https://www.enchantedlearning.com" + links[counter]
-        print(website)
-        uClient = uReq(my_url)
+    with FileHandler(i, 'w+') as file1:
+        website = "https://www.enchantedlearning.com" + links[counter1]
+        uClient = uReq(website)
         page_html =  uClient.read()
         uClient.close()
         page=soup(page_html, "html.parser")
         for word in page.find_all("div",  {"class": "wordlist-item"}):
             file1.write(word.text)
             file1.write("\n")
-            print("Hallo")
-    counter += 1
+    counter1 += 1
+    print("Made file with topic " + topic[counter1-1])
+
+endtime = time.time()
+
+print("It took " + str(abs(round(starttime - endtime,5))) + " seconds to run the program!")
