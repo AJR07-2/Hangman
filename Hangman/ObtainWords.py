@@ -46,7 +46,9 @@ while counter <= 15:
 
 
 #---------SECOND PARSE OF WORDS------------
-a = input("Is it alright if we create a few files showing the databank of words for this? If you think you already have it, please input 0. Otherwise, input anything")
+a = input("""Is it alright if we create a few files showing the databank of words for this? 
+WARNING: This takes > 3.35 minutes, depending on internet speed and CPU
+If you think you already have it (checking system to see if u already have it or no coming up), please input 0. Otherwise, input anything. """)
 
 if a == "0":
     print("Alright, shutting program...")
@@ -71,4 +73,4 @@ for i in topic:
 
 endtime = time.time()
 
-print("It took " + str(abs(round(starttime - endtime,5))) + " seconds to run the program!")
+print("It took " + str(abs(round(starttime - endtime,5)/60)) + " minutes to run the program!")
