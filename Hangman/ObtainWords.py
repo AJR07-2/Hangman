@@ -31,12 +31,23 @@ while counter <= 15:
 
 
 #---------SECOND PARSE OF WORDS------------
-a = input("Is it alright if we create a few folders and files showing the databank of words for this? If you think you already have it, please input 0. Otherwise, input anything")
+a = input("Is it alright if we create a few files showing the databank of words for this? If you think you already have it, please input 0. Otherwise, input anything")
 
 if a == "0":
     print("Alright, shutting program...")
     sys.exit()
 
-print("Making directories and files in " + str(os.getcwd()))
+print("Making  files in " + str(os.getcwd()))
 
-os.mkdir(os.getcwd())
+counter = 0
+
+for i in topic:
+    file = open(i, "w+")
+    website = "https://www.enchantedlearning.com/wordlist" + links[counter]
+    uClient = uReq(my_url)
+    page_html =  uClient.read()
+    uClient.close()
+    page=soup(page_html, "html.parser")
+
+
+    counter += 1
