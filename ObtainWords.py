@@ -36,16 +36,28 @@ counter = 12
 links = []
 topic = []
 
+file2 = open("topics.txt", "w+")
+
 while counter <= 15:
     container = tables[counter].find_all("a")
     for label in container:
         links.append(label.get('href'))
         topic1 = label.text.replace('/','')
         topic.append(topic1.replace("\"", ""))
+        file2.write(topic1.replace("\"", ""))
+        file2.write("\n")
     counter += 1
-
+file2.close
 
 #---------SECOND PARSE OF WORDS------------
+
+hallo = input("""Do you have a folder named 'Database' with files inside already? 
+If yes, input 1(safer option if this is ur first time running this), if not, input anything else
+WARNING: IF THERE IS NO FILES REQUIRED, it might crash!""")
+
+if hallo != "1":
+    sys.exit
+
 a = input("""Is it alright if we create a few files showing the databank of words for this? 
 WARNING: This takes > 3.35 minutes, depending on internet speed and CPU
 If you think you already have it (checking system to see if u already have it or no coming up), please input 0. Otherwise, input anything. """)

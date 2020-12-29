@@ -3,6 +3,8 @@ import bs4
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import time
+import os
+
 #--------------------
 #introduction
 #--------------------
@@ -20,9 +22,9 @@ Thanks and enjoy! :D
 print(intro)
 time.sleep(5)
 
-hallo = input("Do you have many files having the extension '.txt' already? If yes, input 1, if not, input anything else")
-if hallo == 1:
-  import ObtainWords
+
+
+os.system('ObtainWords.py')
 
 #--------------------
 #functions
@@ -57,17 +59,6 @@ while True:
 #Web Scrape
 #--------------------
 
-
-
-my_url = "https://www.enchantedlearning.com/wordlist/" + topic + ".shtml"
-uClient = uReq(my_url)
-page_html =  uClient.read()
-uClient.close()
-
-#html parsing
-page=soup(page_html, "html.parser")
-container = page.findAll("div", {"class":"worldlist-section wordlist-section--not-first"})
-print(str(container))
 #time 
 startime = time.time()
 
