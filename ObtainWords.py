@@ -50,34 +50,30 @@ hallo = input("""Do you have a folder named 'Database' with files inside already
 If yes, input 1(safer option if this is ur first time running this), if not, input anything else
 WARNING: IF THERE IS NO FILES REQUIRED, it might crash!""")
 
-if hallo != "1":
-    sys.exit
+if hallo == "1":
+    a = input("""Is it alright if we create a few files showing the databank of words for this? 
+    WARNING: This takes > 3.35 minutes, depending on internet speed and CPU
+    If you think you do not have it (checking system to see if u already have it or no coming up), please input 1. Otherwise, input anything. """)
 
-a = input("""Is it alright if we create a few files showing the databank of words for this? 
-WARNING: This takes > 3.35 minutes, depending on internet speed and CPU
-If you think you already have it (checking system to see if u already have it or no coming up), please input 0. Otherwise, input anything. """)
+    if a == "1":
+        os.chdir(str(os.getcwd()) + "/Hangman/DataBase")
+        print("Making files in " + str(os.getcwd()) + " ")
 
-if a == "0":
-    print("Alright, shutting program...")
-    sys.exit()
-os.chdir(str(os.getcwd()) + "/Hangman/DataBase")
-print("Making files in " + str(os.getcwd()) + " ")
+        counter1 = 0
 
-counter1 = 0
+        for i in topic:
+            with FileHandler(i, 'w+') as file1:
+                website = "https://www.enchantedlearning.com" + links[counter1]
+                uClient = uReq(website)
+                page_html =  uClient.read()
+                uClient.close()
+                page=soup(page_html, "html.parser")
+                for word in page.find_all("div",  {"class": "wordlist-item"}):
+                    file1.write(word.text)
+                    file1.write("\n")
+            counter1 += 1
+            print("Made file with topic " + topic[counter1-1])
 
-for i in topic:
-    with FileHandler(i, 'w+') as file1:
-        website = "https://www.enchantedlearning.com" + links[counter1]
-        uClient = uReq(website)
-        page_html =  uClient.read()
-        uClient.close()
-        page=soup(page_html, "html.parser")
-        for word in page.find_all("div",  {"class": "wordlist-item"}):
-            file1.write(word.text)
-            file1.write("\n")
-    counter1 += 1
-    print("Made file with topic " + topic[counter1-1])
+        endtime = time.time()
 
-endtime = time.time()
-
-print("It took " + str(abs(round(starttime - endtime,5)/60)) + " minutes to run the program!")
+        print("It took " + str(abs(round(starttime - endtime,5)/60)) + " minutes to run the program!")

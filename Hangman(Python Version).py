@@ -20,12 +20,10 @@ Thanks and enjoy! :D
 """
 
 print(intro)
-time.sleep(5)
+time.sleep(1)
 
-
-
-os.system('ObtainWords.py')
-
+os.chdir(str(os.getcwd()) + "/Hangman")
+exec(open('ObtainWords.py').read())
 #--------------------
 #functions
 #--------------------
@@ -43,8 +41,10 @@ for topic in words:
 #topic choice
 #--------------------
 
-topicfile = open("topics.txt", "w+")
+topicfile = open("words.txt", "w+")
 
+for i in topicfile:
+  topic.append(i.replace("\n", ""))
 
 topicfile.close()
 
