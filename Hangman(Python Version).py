@@ -43,6 +43,11 @@ for topic in words:
 #topic choice
 #--------------------
 
+topicfile = open("topics.txt", "w+")
+
+
+topicfile.close()
+
 while True:
   topic = input("What topic do you want to choose? Type ? for list of topics!")
   if topic == "?":
@@ -55,9 +60,6 @@ while True:
   else:
     error(topic, "Input must be in the list of topics. input ? for list!")
 
-#--------------------
-#Web Scrape
-#--------------------
 
 #time 
 startime = time.time()

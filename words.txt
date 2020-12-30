@@ -158,10 +158,10 @@ Verbs, Regular
 Verbs that are Nouns
 Virtues
 Water
-Ways to Say "Big"
-Ways to Say "Happy"
-Ways to Say "Many"
-Ways to Say "Said"
+Ways to Say Big
+Ways to Say Happy
+Ways to Say Many
+Ways to Say Said
 Weapons
 Weather
 Weights and Measures

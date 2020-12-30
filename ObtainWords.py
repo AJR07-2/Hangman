@@ -36,18 +36,13 @@ counter = 12
 links = []
 topic = []
 
-file2 = open("topics.txt", "w+")
 
 while counter <= 15:
     container = tables[counter].find_all("a")
     for label in container:
         links.append(label.get('href'))
         topic1 = label.text.replace('/','')
-        topic.append(topic1.replace("\"", ""))
-        file2.write(topic1.replace("\"", ""))
-        file2.write("\n")
     counter += 1
-file2.close
 
 #---------SECOND PARSE OF WORDS------------
 
