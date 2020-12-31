@@ -12,10 +12,18 @@ import Game
 #--------------------
 #introduction
 #--------------------
-intro = """
+intro = """"
 Hello there, this is a Hangman Game made by AJR, Dec 23 2020
-More improvements will be made in the future, feel free to open an issue if u have any suggestions/There is any bugs!
+More improvements will be made in the future, feel free to open an issue if u have any suggestions or there is any bugs!
 Thanks and enjoy! :D
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
 
 --------FUTURE IMPROVEMENTS---------
 1. App
@@ -33,7 +41,7 @@ exec(open('ObtainWords.py').read())
 #--------------------
 
 def error(input, requirements):
-  print(f"Ur input: {input} is Invalid. Please input acccording to the requirements of {requirements} instead.")
+  print(f"Ur input: {input} is Invalid. This is because: {requirements} ")
 
 #gathering the list of topics for the game
 myList = []
@@ -58,17 +66,26 @@ while True:
   else:
     error(topic, "Input must be in the list of topics. input ? for list!")
 
-
 #time 
 startime = time.time()
 
-print(Game.generateword(""))
+ganeratedWord = Game.generateword("")
+guessedletters = 0 #incldues duplicates
+guessedalph = []
+
+while guessedletters < len(ganeratedWord):
+  print()
 
 
 
 
 
-#check time
+
+
+
+#--------------------
+#end of program
+#--------------------
 endtime = time.time()
 totaltime = startime - endtime
 totaltime = str(abs(round(totaltime,5)))

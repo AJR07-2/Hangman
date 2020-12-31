@@ -1,5 +1,6 @@
 import random
 import os
+import Hangman_py
 
 def generateword(previousword):
     chosen = ""
@@ -24,11 +25,12 @@ def checkwin(word):
     else:
         return False
 
-def move(word, charguessed):
+def move(word, guessedletters):
     print(f"This is the current word: {word}")
-    print()
-
-
-
-
-
+    
+    while True:
+        chaguessed = input("Guess a letter:")
+        if len(chaguessed) != 1:
+            Hangman_py.error(chaguessed, "only a single character is allowed")
+        elif chaguessed in guessedletters:
+            Hangman_py.error(chaguessed, f"letter has beenguessed before, here is your current list of guessed letters: {guessedletters}")
