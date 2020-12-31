@@ -33,7 +33,7 @@ exec(open('ObtainWords.py').read())
 #--------------------
 
 def error(input, requirements):
-  print("Ur input: " + input + " is Invalid. Please input acccording to the requirements of(" + requirements + ") instead.")
+  print(f"Ur input: {input} is Invalid. Please input acccording to the requirements of {requirements} instead.")
 
 #gathering the list of topics for the game
 myList = []
@@ -71,4 +71,5 @@ print(Game.generateword(""))
 #check time
 endtime = time.time()
 totaltime = startime - endtime
-print("You took " + str(abs(round(totaltime,5))) + " seconds to complete the Hangman word!")
+totaltime = str(abs(round(totaltime,5)))
+print(f"You took {totaltime} seconds to complete the Hangman word!")

@@ -4,22 +4,7 @@ import os
 import sys
 import time
 print("")
-print("")
 starttime = time.time()
-
-class FileHandler():
-
-    def __init__(self, file_name, file_mode):
-        self._file_name = file_name
-        self._file_mode = file_mode
-
-    def __enter__(self):
-        self._file = open(self._file_name, self._file_mode)
-        return self._file
-
-
-    def __exit__(self, exc_type,exc_value, exc_traceback):
-        self._file.close()
 
 #--------FIRST PARSE OF LINKS----------
 my_url = "https://www.enchantedlearning.com/wordlist"
@@ -62,7 +47,7 @@ If you think you do not have it (checking system to see if u already have it or 
         counter1 = 0
 
         for i in topic:
-            with FileHandler(i, 'w+') as file1:
+            with open(i, 'w+') as file1:
                 website = "https://www.enchantedlearning.com" + links[counter1]
                 uClient = uReq(website)
                 page_html =  uClient.read()
@@ -73,8 +58,8 @@ If you think you do not have it (checking system to see if u already have it or 
                     file1.write("\n")
                     numberofwords += 1
             counter1 += 1
-            print("Made file with topic " + topic[counter1-1])
+            print(f"Made file with topic {topic[counter1-1]}")
 
         endtime = time.time()
-
-        print("It took " + str(abs(round(starttime - endtime,5)/60)) + " minutes to run the program! A total of " + str(numberofwords) + " words has been added to the database")
+        totaltime = str(abs(round(starttime - endtime,5)/60))
+        print(f"It took {totaltime} minutes to run the program! A total of {numberofwords} words has been added to the database")
