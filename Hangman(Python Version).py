@@ -1,10 +1,14 @@
+
+#--------------------
+#importing
+#--------------------
 import time
 import bs4
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import time
 import os
-
+import Game
 #--------------------
 #introduction
 #--------------------
@@ -33,20 +37,14 @@ def error(input, requirements):
 
 #gathering the list of topics for the game
 myList = []
-words = open("/Users/angjunray/Desktop/Coding/General/Projects/Hangman/words.txt", "r")
+words = open("words.txt", "r")
 for topic in words:
   myList.append(topic.rstrip("\n"))
+words.close()
 
 #--------------------
 #topic choice
 #--------------------
-
-topicfile = open("words.txt", "w+")
-
-for i in topicfile:
-  topic.append(i.replace("\n", ""))
-
-topicfile.close()
 
 while True:
   topic = input("What topic do you want to choose? Type ? for list of topics!")
@@ -64,7 +62,7 @@ while True:
 #time 
 startime = time.time()
 
-
+print(Game.generateword(""))
 
 
 

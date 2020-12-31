@@ -1,7 +1,8 @@
 import random
 import os
 def generateword(previousword):
-    topic = open("words.txt", "w+")
+    chosen = ""
+    topic = open("words.txt", "r")
     randomtopic = random.randint(1, 169)
     counter = 1
     for word in topic:
@@ -10,7 +11,7 @@ def generateword(previousword):
             break
         counter += 1
     topic.close()
-    os.chdir(str(os.mkdir())+ "/Database")
+    os.chdir(str(os.getcwd()) + "/Database")
     worddict = open(chosen, "w+")
     randomword = random.randint(1, file_len(chosen))
     counter = 1
@@ -24,7 +25,8 @@ def generateword(previousword):
 
 
 def file_len(fname):
-    with open(fname) as f:
-        for i, l in enumerate(f):
-            pass
-    return i + 1
+    with open(fname, "r") as f:
+        counter = 0
+        for i, in f:
+            counter += 1
+    return counter
