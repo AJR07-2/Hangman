@@ -41,19 +41,19 @@ while counter <= 15:
     container = tables[counter].find_all("a")
     for label in container:
         links.append(label.get('href'))
-        topic1 = label.text.replace('/','')
+        topic.append(label.text.replace('/','').replace("\"", ""))
     counter += 1
 
 #---------SECOND PARSE OF WORDS------------
-
+numberofwords = 0
 hallo = input("""Do you have a folder named 'Database' with files inside already? 
 If yes, input 1(safer option if this is ur first time running this), if not, input anything else
 WARNING: IF THERE IS NO FILES REQUIRED, it might crash!""")
 
 if hallo == "1":
     a = input("""Is it alright if we create a few files showing the databank of words for this? 
-    WARNING: This takes > 3.35 minutes, depending on internet speed and CPU
-    If you think you do not have it (checking system to see if u already have it or no coming up), please input 1. Otherwise, input anything. """)
+WARNING: This takes > 3.35 minutes, depending on internet speed and CPU
+If you think you do not have it (checking system to see if u already have it or no coming up), please input 1. Otherwise, input anything. """)
 
     if a == "1":
         os.chdir(str(os.getcwd()) + "/Hangman/DataBase")
@@ -71,9 +71,10 @@ if hallo == "1":
                 for word in page.find_all("div",  {"class": "wordlist-item"}):
                     file1.write(word.text)
                     file1.write("\n")
+                    numberofwords += 1
             counter1 += 1
             print("Made file with topic " + topic[counter1-1])
 
         endtime = time.time()
 
-        print("It took " + str(abs(round(starttime - endtime,5)/60)) + " minutes to run the program!")
+        print("It took " + str(abs(round(starttime - endtime,5)/60)) + " minutes to run the program! A total of " + str(numberofwords) + " words has been added to the database")
