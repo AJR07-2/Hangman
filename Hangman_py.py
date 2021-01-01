@@ -12,7 +12,7 @@ import Game
 #--------------------
 #introduction
 #--------------------
-intro = """"
+intro = """
 Hello there, this is a Hangman Game made by AJR, Dec 23 2020
 More improvements will be made in the future, feel free to open an issue if u have any suggestions or there is any bugs!
 Thanks and enjoy! :D
@@ -72,9 +72,10 @@ startime = time.time()
 ganeratedWord = Game.generateword("")
 guessedletters = 0 #incldues duplicates
 guessedalph = []
+lives = 5
 
 while guessedletters < len(ganeratedWord):
-  print()
+  print("You have 5 lives, each incorrect guess is 1 live subtracted")
 
 
 
