@@ -1,12 +1,9 @@
 import random
 import os
-import Hangman_py
+def error(input, requirements):
+  print(f"Ur input: {input} is Invalid. This is because: {requirements} ")
 
-def generateword(previousword):
-    chosen = ""
-    with open("words.txt") as topic:
-        chosen = random.choice(list(topic))
-    
+def generateword(previousword,chosen):
     chosen = chosen.replace("\n", "")
     cwd = os.getcwd()
     os.chdir(f"{cwd}/Database")
@@ -31,11 +28,11 @@ def move(word, guessedletters, lives):
     while True:
         chaguessed = input("Guess a letter:")
         if len(chaguessed) != 1:
-            Hangman_py.error(chaguessed, "only a single character is allowed")
+            error(chaguessed, "only a single character is allowed")
         elif chaguessed in guessedletters:
-            Hangman_py.error(chaguessed, f"letter has beenguessed before, here is your current list of guessed letters: {guessedletters}")
+            error(chaguessed, f"letter has beenguessed before, here is your current list of guessed letters: {guessedletters}")
         elif chaguessed.isalpha == False:
-            Hangman_py.error(chaguessed, "Hmm, it seems like ur input isn't an alphabet")
+            error(chaguessed, "Hmm, it seems like ur input isn't an alphabet")
         else:
             if chaguessed in word:
                 ocurrences = str(list.count(chaguessed))

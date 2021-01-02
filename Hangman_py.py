@@ -69,17 +69,20 @@ while True:
 #time 
 startime = time.time()
 
-ganeratedWord = Game.generateword("")
+ganeratedWord = Game.generateword("", topic)
+
+word = list(ganeratedWord)
 guessedletters = 0 #incldues duplicates
 guessedalph = []
 lives = 5
 
 while guessedletters < len(ganeratedWord):
   print("You have 5 lives, each incorrect guess is 1 live subtracted")
-
-
-
-
+  result = Game.move(word, guessedalph, lives)
+  guessedalph.append(result[1])
+  guessedletters += int(result[0])
+  lives = int(result[2])
+  
 
 
 
