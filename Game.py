@@ -35,7 +35,7 @@ def move(word, guessedletters, lives):
             error(chaguessed, "Hmm, it seems like ur input isn't an alphabet")
         else:
             if chaguessed in word:
-                ocurrences = str(list.count(chaguessed))
+                ocurrences = str(word.count(chaguessed))
                 detials.append(ocurrences)
                 detials.append(chaguessed)
                 print(f"{chaguessed} is in the word! There were {ocurrences} '{chaguessed}'s in the word!")
