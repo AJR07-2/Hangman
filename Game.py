@@ -15,6 +15,10 @@ def generateword(previousword,chosen):
     return wordchosen
 
 
+def separationline():
+    print("------------------------------------------------------")
+
+separationline()
 
 def checkwin(word):
     if('_' not in word):
@@ -22,15 +26,21 @@ def checkwin(word):
     else:
         return False
 
-def move(word, guessedletters, lives):
-    print(f"This is the current word: {word}")
+def printword(word):
+    printtext = ""
+    for i in word:
+        printtext += i
+    print(f"This is the current word {printtext}")
+
+def move(word, guessedletters, lives, guessedword):
+    printword(guessedword)
     detials = [] #1. amount of letters guessed(non-unique), 2. letter guessed, 3, lives
     while True:
         chaguessed = input("Guess a letter:")
         if len(chaguessed) != 1:
             error(chaguessed, "only a single character is allowed")
         elif chaguessed in guessedletters:
-            error(chaguessed, f"letter has beenguessed before, here is your current list of guessed letters: {guessedletters}")
+            error(chaguessed, f"letter has been guessed before, here is your current list of guessed letters: {guessedletters}")
         elif chaguessed.isalpha == False:
             error(chaguessed, "Hmm, it seems like ur input isn't an alphabet")
         else:

@@ -36,12 +36,6 @@ time.sleep(1)
 
 os.chdir(str(os.getcwd()) + "/Hangman")
 exec(open('ObtainWords.py').read())
-#--------------------
-#functions
-#--------------------
-
-def error(input, requirements):
-  print(f"Ur input: {input} is Invalid. This is because: {requirements} ")
 
 #gathering the list of topics for the game
 myList = []
@@ -64,24 +58,39 @@ while True:
   elif topic in myList:
     break
   else:
-    error(topic, "Input must be in the list of topics. input ? for list!")
+    Game.error(topic, "Input must be in the list of topics. Input ? for list! (Please check if ur caps differs. It matters!)")
 
 #time 
 startime = time.time()
 
-ganeratedWord = Game.generateword("", topic)
+generatedWord = Game.generateword("", topic)
 
-word = list(ganeratedWord)
+shownToUser = []
+for i in generatedWord:
+  shownToUser.append('_')
+word = list(generatedWord)
 guessedletters = 0 #incldues duplicates
 guessedalph = []
 lives = 5
+print("You have 5 lives, each incorrect guess is 1 live subtracted")
 
-while guessedletters < len(ganeratedWord):
-  print("You have 5 lives, each incorrect guess is 1 live subtracted")
-  result = Game.move(word, guessedalph, lives)
+while guessedletters < len(generatedWord):
+  result = Game.move(word, guessedalph, lives, shownToUser)
   guessedalph.append(result[1])
   guessedletters += int(result[0])
   lives = int(result[2])
+
+  counter = 0
+  for i in generatedWord:
+    if result[1] == i:
+      shownToUser[counter] = result[1]
+    counter += 1
+  
+  if lives == 0:
+    print(f"Oh no, u have lost all your lives :( THe word was {generatedWord}. Try again next time!")
+
+
+print("The word database is taken from enchantedlearning.com, Thanks for playing! More features coming soon!")
   
 
 
@@ -92,5 +101,5 @@ while guessedletters < len(ganeratedWord):
 #--------------------
 endtime = time.time()
 totaltime = startime - endtime
-totaltime = str(abs(round(totaltime,5)))
-print(f"You took {totaltime} seconds to complete the Hangman word!")
+totaltime = str(abs(round(totaltime,5)/60))
+print(f"You took {totaltime} minutes to complete the Hangman word!")
