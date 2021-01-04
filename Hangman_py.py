@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup as soup
 import time
 import os
 import Game
+import pictures
 #--------------------
 #introduction
 #--------------------
@@ -30,12 +31,20 @@ Thanks and enjoy! :D
 2. more words
 3. multiplayer
 """
+Game.separationline()
+Game.separationline()
 
 print(intro)
 time.sleep(1)
 
+Game.separationline()
+
 os.chdir(str(os.getcwd()) + "/Hangman")
 exec(open('ObtainWords.py').read())
+
+Game.separationline()
+Game.separationline()
+
 
 #gathering the list of topics for the game
 myList = []
@@ -60,9 +69,15 @@ while True:
   else:
     Game.error(topic, "Input must be in the list of topics. Input ? for list! (Please check if ur caps differs. It matters!)")
 
+Game.separationline()
+Game.separationline()
+
+Game.separationline()
+
 #time 
 startime = time.time()
 
+#Program itself
 generatedWord = Game.generateword("", topic)
 
 shownToUser = []
@@ -72,7 +87,9 @@ word = list(generatedWord)
 guessedletters = 0 #incldues duplicates
 guessedalph = []
 lives = 5
-print("You have 5 lives, each incorrect guess is 1 live subtracted")
+print("You have 6 lives, each incorrect guess is 1 live subtracted")
+
+Game.enumChecker(7)
 
 while guessedletters < len(generatedWord):
   result = Game.move(word, guessedalph, lives, shownToUser)
@@ -89,12 +106,20 @@ while guessedletters < len(generatedWord):
   if lives == 0:
     print(f"Oh no, u have lost all your lives :( THe word was {generatedWord}. Try again next time!")
 
+if lives != 0:
+  print("You have won! Good job :D")
 
-print("The word database is taken from enchantedlearning.com, Thanks for playing! More features coming soon!")
-  
+Game.enumChecker(lives+1)
+
+Game.separationline()
+Game.separationline()
 
 
+print("""The word database is taken from enchantedlearning.com.
+Hangman ASCII pictures are taken from https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c.
+Thanks for playing! More features coming soon!""")
 
+Game.separationline()
 
 #--------------------
 #end of program

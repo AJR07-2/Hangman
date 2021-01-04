@@ -1,5 +1,7 @@
 import random
 import os
+import pictures
+
 def error(input, requirements):
   print(f"Ur input: {input} is Invalid. This is because: {requirements} ")
 
@@ -16,9 +18,26 @@ def generateword(previousword,chosen):
 
 
 def separationline():
-    print("------------------------------------------------------")
+    print("---------------------------------------------------------------------------------")
 
-separationline()
+    pictures.Pictures.
+
+def enumChecker(lives):
+    print("Current live counts:")
+    if lives-1 == 6:
+        print(pictures.Pictures.six)
+    elif lives-1 == 5:
+        print(pictures.Pictures.five)
+    elif lives-1 == 4:
+        print(pictures.Pictures.four)
+    elif lives-1 == 3:
+        print(pictures.Pictures.three)
+    elif lives-1 == 2:
+        print(pictures.Pictures.two)
+    elif lives-1 == 1:
+        print(pictures.Pictures.one)
+    elif lives-1 == 0:
+        print(pictures.Pictures.zero)
 
 def checkwin(word):
     if('_' not in word):
@@ -56,5 +75,9 @@ def move(word, guessedletters, lives, guessedword):
                 detials.append(chaguessed)
                 detials.append(str(lives-1))
                 print(f"{chaguessed} is not in the word :(. 1 life has been lost, u currently have {lives-1} lives!")
+            enumChecker(lives)
+
+
             break
+    separationline()
     return detials
