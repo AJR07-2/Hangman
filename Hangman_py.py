@@ -126,5 +126,5 @@ Game.separationline()
 #--------------------
 endtime = time.time()
 totaltime = startime - endtime
-totaltime = str(abs(round(totaltime,5)/60))
+totaltime = str(abs(round(totaltime/60,2)))
 print(f"You took {totaltime} minutes to complete the Hangman word!")

@@ -20,24 +20,10 @@ def generateword(previousword,chosen):
 def separationline():
     print("---------------------------------------------------------------------------------")
 
-    pictures.Pictures.
-
 def enumChecker(lives):
     print("Current live counts:")
-    if lives-1 == 6:
-        print(pictures.Pictures.six)
-    elif lives-1 == 5:
-        print(pictures.Pictures.five)
-    elif lives-1 == 4:
-        print(pictures.Pictures.four)
-    elif lives-1 == 3:
-        print(pictures.Pictures.three)
-    elif lives-1 == 2:
-        print(pictures.Pictures.two)
-    elif lives-1 == 1:
-        print(pictures.Pictures.one)
-    elif lives-1 == 0:
-        print(pictures.Pictures.zero)
+    pictures.CheckEnum(lives)
+    
 
 def checkwin(word):
     if('_' not in word):
@@ -55,6 +41,8 @@ def move(word, guessedletters, lives, guessedword):
     printword(guessedword)
     detials = [] #1. amount of letters guessed(non-unique), 2. letter guessed, 3, lives
     while True:
+        if (random.randint(1, 10) < 5 and " " in word) and " " not in guessedletters:
+            print("BONUS HINT: This word has a ' '(space) in it, try guessing space to avoid losing lives :D")
         chaguessed = input("Guess a letter:")
         if len(chaguessed) != 1:
             error(chaguessed, "only a single character is allowed")
@@ -67,15 +55,16 @@ def move(word, guessedletters, lives, guessedword):
                 ocurrences = str(word.count(chaguessed))
                 detials.append(ocurrences)
                 detials.append(chaguessed)
-                print(f"{chaguessed} is in the word! There were {ocurrences} '{chaguessed}'s in the word!")
                 detials.append(str(lives))
+                print(f"{chaguessed} is in the word! There were {ocurrences} '{chaguessed}'s in the word!")
+                enumChecker(lives)
             
             else:
                 detials.append("0")
                 detials.append(chaguessed)
                 detials.append(str(lives-1))
                 print(f"{chaguessed} is not in the word :(. 1 life has been lost, u currently have {lives-1} lives!")
-            enumChecker(lives)
+                enumChecker(lives-1)
 
 
             break
