@@ -2,6 +2,14 @@ import random
 import os
 import pictures
 
+def createFolder(directory):
+    try:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+    except OSError:
+        print ('Error: Creating directory. ' +  directory)
+        
+
 def error(input, requirements):
   print(f"Ur input: {input} is Invalid. This is because: {requirements} ")
 

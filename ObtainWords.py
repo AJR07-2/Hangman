@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup as soup
 import os
 import sys
 import time
+import Game
 print("")
 starttime = time.time()
 
@@ -41,7 +42,13 @@ WARNING: This takes > 3.35 minutes, depending on internet speed and CPU
 If you think you do not have it (checking system to see if u already have it or no coming up), please input 1. Otherwise, input anything. """)
 
     if a == "1":
-        os.chdir(str(os.getcwd()) + "/Hangman/DataBase")
+        while True:
+            try:
+                os.chdir(str(os.getcwd()) + "/Hangman/DataBase")
+                break
+            except:
+                print("U do not have a Database, creating it now...")
+                Game.createFolder("DataBase")
         print("Making files in " + str(os.getcwd()) + " ")
 
         counter1 = 0
