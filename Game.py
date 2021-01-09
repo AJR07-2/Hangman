@@ -36,6 +36,7 @@ def printword(word):
     printtext = ""
     for i in word:
         printtext += i
+        printtext += " "
     print(f"This is the current word {printtext}")
 
 def move(word, guessedletters, lives, guessedword):

@@ -39,7 +39,6 @@ time.sleep(1)
 
 Game.separationline()
 
-os.chdir(str(os.getcwd()) + "/Hangman")
 exec(open('ObtainWords.py').read())
 
 Game.separationline()
