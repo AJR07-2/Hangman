@@ -53,6 +53,7 @@ If you think you do not have it (checking system to see if u already have it or 
                     parent_dir = os.getcwd()
                     path = os.path.join(parent_dir, directory) 
                     os.mkdir(path) 
+                    os.chdir(str(os.getcwd()) + "/DataBase")
                     break
                 except:
                     print("Failed to make database, please report error to github")
