@@ -44,11 +44,20 @@ If you think you do not have it (checking system to see if u already have it or 
     if a == "1":
         while True:
             try:
-                os.chdir(str(os.getcwd()) + "/Hangman/DataBase")
+                os.chdir(str(os.getcwd()) + "/DataBase")
                 break
             except:
                 print("U do not have a Database, creating it now...")
-                Game.createFolder("DataBase")
+                try:
+                    directory = "DataBase"
+                    parent_dir = os.getcwd()
+                    path = os.path.join(parent_dir, directory) 
+                    os.mkdir(path) 
+                    break
+                except:
+                    print("Failed to make database, please report error to github")
+
+                
         print("Making files in " + str(os.getcwd()) + " ")
 
         counter1 = 0
@@ -70,3 +79,4 @@ If you think you do not have it (checking system to see if u already have it or 
         endtime = time.time()
         totaltime = str(abs(round(starttime - endtime,5)/60))
         print(f"It took {totaltime} minutes to run the program! A total of {numberofwords} words has been added to the database")
+        os.chdir("..")

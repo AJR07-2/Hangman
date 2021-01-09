@@ -71,7 +71,6 @@ while True:
 
 Game.separationline()
 Game.separationline()
-
 Game.separationline()
 
 #time 
@@ -105,9 +104,10 @@ while guessedletters < len(generatedWord):
   
   if lives == 0:
     print(f"Oh no, u have lost all your lives :( THe word was {generatedWord}. Try again next time!")
-
-if lives != 0:
-  print("You have won! Good job :D")
+    break
+  if '_' not in shownToUser:
+    print("You have won! Good job :D")
+    break
 
 Game.enumChecker(lives+1)
 
@@ -127,4 +127,4 @@ Game.separationline()
 endtime = time.time()
 totaltime = startime - endtime
 totaltime = str(abs(round(totaltime/60,2)))
-print(f"You took {totaltime} minutes to complete the Hangman word!")
+print(f"You took {totaltime} minutes to complete the Hangman word program!")
