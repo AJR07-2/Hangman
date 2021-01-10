@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as soup
 import os
 import sys
 import time
-import Game
+import Functions
 print("")
 starttime = time.time()
 

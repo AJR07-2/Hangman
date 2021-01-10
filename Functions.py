@@ -1,10 +1,15 @@
 import random
 import os
 import pictures
+import subprocess
+import sys
         
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    print(f"Installed {package}")
 
 def error(input, requirements):
-  print(f"Ur input: {input} is Invalid. This is because: {requirements} ")
+    print(f"Ur input: {input} is Invalid. This is because: {requirements} ")
 
 def generateword(previousword,chosen):
     chosen = chosen.replace("\n", "")

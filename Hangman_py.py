@@ -1,15 +1,38 @@
-
 #--------------------
 #importing
 #--------------------
 import time
-import bs4
-from urllib.request import urlopen as uReq
-from bs4 import BeautifulSoup as soup
-import time
-import os
-import Game
+import Functions
 import pictures
+
+while True:
+  try:
+    import bs4
+    break
+  except:
+    print("Library required to be installed: bs4")
+    Functions.install("bs4")
+
+while True:
+  try:
+    from urllib.request import urlopen as uReq
+    break
+  except:
+    print("Library to be installed: urlib")
+    Functions.install("urlib")
+from bs4 import BeautifulSoup as soup
+
+import time
+
+while True:
+  try:
+    import os
+    break
+  except:
+    print("Library required to be installed: os")
+    Functions.install("os")
+
+
 #--------------------
 #introduction
 #--------------------
@@ -31,18 +54,18 @@ Thanks and enjoy! :D
 2. more words
 3. multiplayer
 """
-Game.separationline()
-Game.separationline()
+Functions.separationline()
+Functions.separationline()
 
 print(intro)
 time.sleep(1)
 
-Game.separationline()
+Functions.separationline()
 
 exec(open('ObtainWords.py').read())
 
-Game.separationline()
-Game.separationline()
+Functions.separationline()
+Functions.separationline()
 
 
 #gathering the list of topics for the game
@@ -66,17 +89,17 @@ while True:
   elif topic in myList:
     break
   else:
-    Game.error(topic, "Input must be in the list of topics. Input ? for list! (Please check if ur caps differs. It matters!)")
+    Functions.error(topic, "Input must be in the list of topics. Input ? for list! (Please check if ur caps differs. It matters!)")
 
-Game.separationline()
-Game.separationline()
-Game.separationline()
+Functions.separationline()
+Functions.separationline()
+Functions.separationline()
 
 #time 
 startime = time.time()
 
 #Program itself
-generatedWord = Game.generateword("", topic)
+generatedWord = Functions.generateword("", topic)
 
 shownToUser = []
 for i in generatedWord:
@@ -87,10 +110,10 @@ guessedalph = []
 lives = 5
 print("You have 6 lives, each incorrect guess is 1 live subtracted")
 
-Game.enumChecker(7)
+Functions.enumChecker(7)
 
 while guessedletters < len(generatedWord):
-  result = Game.move(word, guessedalph, lives, shownToUser)
+  result = Functions.move(word, guessedalph, lives, shownToUser)
   guessedalph.append(result[1])
   guessedletters += int(result[0])
   lives = int(result[2])
@@ -108,17 +131,17 @@ while guessedletters < len(generatedWord):
     print("You have won! Good job :D")
     break
 
-Game.enumChecker(lives+1)
+Functions.enumChecker(lives+1)
 
-Game.separationline()
-Game.separationline()
+Functions.separationline()
+Functions.separationline()
 
 
 print("""The word database is taken from enchantedlearning.com.
 Hangman ASCII pictures are taken from https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c.
 Thanks for playing! More features coming soon!""")
 
-Game.separationline()
+Functions.separationline()
 
 #--------------------
 #end of program
