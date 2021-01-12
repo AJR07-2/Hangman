@@ -4,34 +4,10 @@
 import time
 import Functions
 import pictures
-
-while True:
-  try:
-    import bs4
-    break
-  except:
-    print("Library required to be installed: bs4")
-    Functions.install("bs4")
-
-while True:
-  try:
-    from urllib.request import urlopen as uReq
-    break
-  except:
-    print("Library to be installed: urlib")
-    Functions.install("urlib")
+import bs4
+from urllib.request import urlopen as uReq
+import os
 from bs4 import BeautifulSoup as soup
-
-import time
-
-while True:
-  try:
-    import os
-    break
-  except:
-    print("Library required to be installed: os")
-    Functions.install("os")
-
 
 #--------------------
 #introduction
