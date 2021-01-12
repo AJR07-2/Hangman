@@ -34,7 +34,7 @@ Functions.separationline()
 Functions.separationline()
 
 print(intro)
-time.sleep(1)
+time.sleep(4)
 
 Functions.separationline()
 
@@ -106,6 +106,7 @@ while guessedletters < len(generatedWord):
   if '_' not in shownToUser:
     print("You have won! Good job :D")
     break
+  time.sleep(2)
 
 Functions.enumChecker(lives+1)
 
@@ -126,3 +127,4 @@ endtime = time.time()
 totaltime = startime - endtime
 totaltime = str(abs(round(totaltime/60,2)))
 print(f"You took {totaltime} minutes to complete the Hangman word program!")
+time.sleep(10)
