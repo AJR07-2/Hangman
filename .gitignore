@@ -1,2 +1,6 @@
 __pycache__
 DataBase
+.vscode
+workspace.code-workspace
+.DS_Store
+
