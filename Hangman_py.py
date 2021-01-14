@@ -29,18 +29,18 @@ Thanks and enjoy! :D
 2. more words
 3. multiplayer
 """
-Functions.separationline()
-Functions.separationline()
+Functions.separationLine()
+Functions.separationLine()
 
 print(intro)
 time.sleep(4)
 
-Functions.separationline()
+Functions.separationLine()
 
 import ObtainWords
 
-Functions.separationline()
-Functions.separationline()
+Functions.separationLine()
+Functions.separationLine()
 
 
 # gathering the list of topics for the game
@@ -69,15 +69,15 @@ while True:
             "Input must be in the list of topics. Input ? for list! (Please check if ur caps differs. It matters!)",
         )
 
-Functions.separationline()
-Functions.separationline()
-Functions.separationline()
+Functions.separationLine()
+Functions.separationLine()
+Functions.separationLine()
 
 # time
 startime = time.time()
 
 # Program itself
-generatedWord = Functions.generateword("", topic)
+generatedWord = Functions.generateWord("", topic)
 
 shownToUser = []
 for i in generatedWord:
@@ -114,8 +114,8 @@ while guessedletters < len(generatedWord):
 
 Functions.enumChecker(lives + 1)
 
-Functions.separationline()
-Functions.separationline()
+Functions.separationLine()
+Functions.separationLine()
 
 
 print(
@@ -124,7 +124,7 @@ Hangman ASCII pictures are taken from https://gist.github.com/chrishorton/851073
 Thanks for playing! More features coming soon!"""
 )
 
-Functions.separationline()
+Functions.separationLine()
 
 # --------------------
 # end of program

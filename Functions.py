@@ -8,7 +8,7 @@ def error(input, requirements):
     print(f"Ur input: {input} is Invalid. This is because: {requirements} ")
 
 
-def generateword(previousword, chosen):
+def generateWord(previousord, chosen):
     chosen = chosen.replace("\n", "")
     cwd = os.getcwd()
     os.chdir(f"{cwd}/Database")
@@ -20,7 +20,7 @@ def generateword(previousword, chosen):
     return wordchosen
 
 
-def separationline():
+def separationLine():
     print(
         "---------------------------------------------------------------------------------"
     )
@@ -31,7 +31,7 @@ def enumChecker(lives):
     print(Pictures[5 - lives])
 
 
-def printword(word):
+def printWord(word):
     printtext = ""
     for i in word:
         printtext += i
@@ -40,7 +40,7 @@ def printword(word):
 
 
 def move(word, guessedletters, lives, guessedword):
-    printword(guessedword)
+    printWord(guessedword)
     details = (
         []
     )  # 1. amount of letters guessed(non-unique), 2. letter guessed, 3, lives
@@ -80,7 +80,7 @@ def move(word, guessedletters, lives, guessedword):
                 enumChecker(lives - 1)
 
             break
-    separationline()
+    separationLine()
     return details
 
 
